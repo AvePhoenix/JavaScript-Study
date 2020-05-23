@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        'use strict';
+        //统计学生的成绩和学生的名字
+        /*var name=[ "zhang","qing","lin"];
+        var scores=[100,20,60];*/
+
+        var map=new Map([['zhang',100],['qing',20],['lin',60]]);
+        var name = map.get('zhang');
+        map.set('admit',50);
+        map.delete('qing')
+        console.log(name);
+
+        var set=new Set([3,1,1,1,1,1]);
+        set.add(2);
+        set.delete(1);
+        console.log(set);
+        console.log(set.has(3));//判断是否有某个元祖
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

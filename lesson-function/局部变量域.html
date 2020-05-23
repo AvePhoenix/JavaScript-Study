@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function aaa() {
+            for (var i = 0; i <100 ; i++) {
+                console.log(i);
+            }
+            console.log(i+1);//输出：101   i出了作用域还能使用
+        }
+        aaa();
+        function aaaa() {
+            for (let i = 0; i <100 ; i++) {
+                console.log(i);
+            }
+            console.log(i+1);//报错，i出了作用域之外不能使用
+        }
+        aaaa();
+
+
+
+
+        const PI=3.14//只读变量
+        PI='123';//报错，
+    </script>
+</head>
+<body>
+
+</body>
+</html>

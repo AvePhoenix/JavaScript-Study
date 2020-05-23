@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //建议
+        function abs(x){/*
+            arguments.length*/
+            //手动抛出异常来判断是否有参数
+            if (typeof x!=="number"){
+                throw '不是数字';
+            }
+            if(x>=0){
+                return x;
+            }else
+            {
+                return -x;
+            }
+        }
+       /* var abs=function(x){
+            if(x>=0){
+                return x;
+            }else
+            {
+                return -x;
+            }
+        }*/
+       console.log(abs(10));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*function qj() {
+            var x=1;
+            x+=1;
+
+        }
+        x+=2;//会报错，未定义
+*/
+
+        function qj1() {
+            var x=1;
+            function qj2() {
+                var x = "a";
+                console.log(x);//outer    1
+            }
+            console.log(x);//inner    a
+            qj2();
+        }
+        qj1();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

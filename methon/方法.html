@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var app={
+            name:'zhang',
+            age:1998,
+            age1:function () {
+                var now=new Date().getFullYear();
+                return now-this.age;
+            }
+        }
+
+
+
+        function getage () {
+            var now=new Date().getFullYear();
+            return now-this.age;
+        }
+        var app={
+            name:'zhang',
+            age:1998,
+            ag1:getage
+        };
+        var app1={
+            name:'qing',
+            age:1998,
+            ag1:getage
+        };
+
+        getage.apply(app,[]) //this指向app对象，参数为空
+        getage.apply(app1,[])// 不需要改变getage函数，只需要改变getage.apply指定的对象即可
+    </script>
+</head>
+<body>
+
+</body>
+</html>
