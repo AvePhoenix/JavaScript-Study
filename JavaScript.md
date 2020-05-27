@@ -47,9 +47,6 @@ Java和JavaScript没有关系， 一个合格的后端人员，必须精通JavaS
 
 <script src="js/zhang.js"></script>
 
-
-
-
 ## 基本语法
 
 变量类型：
@@ -590,5 +587,677 @@ typeof undefined
 
 #### Data
 
+#### 基本使用
+
+```javascript
+var now =new Date();
+now.getFullYear();//年
+now.getMonth();//月
+now.getDate();//日
+now.getHours();//时
+now.getMinutes();//分
+now.getSeconds();//秒
+now.getTime();//时间戳
+```
+
+#### 转换
+
+```JavaScript
+now.toLocaleDateString();//调用方法
+now.toGMTString()
+```
 
 
+
+### JOSN
+
+早期所有的数据传输习惯使用Xml文件，
+
+JOSN是一种轻量级的数据交换格式，**简洁和清晰地层次结构**使JOSN成为理想的**数据交换语言**，**易于人阅读和编写，同时也易于机器解析和生成，并有效的提升网络传输效率**
+
+
+
+在js中一切皆为对象，任何js支持的类型都可以用JOSN来表示（number，string）
+
+格式：
+
+* ｛｝代表对象
+* 【】代表数组
+* key:value  代表键值对
+
+
+
+JSON字符串和js对象的转换
+
+``` javascript
+//对象
+        var user={
+            name:"zhang",
+            age:13,
+            sex:"男"
+        }
+        console.log(user)
+       /* {name: "zhang", age: 13, sex: "男"}
+        //普通对象*/
+
+       
+       
+        // 对象转换称JSON字符串
+        var jsonUser=JSON.stringify(user)
+        console.log(jsonUser)
+        /*{"name":"zhang","age":13,"sex":"男"}
+        //JSON对象
+*/
+
+        //JSON  字符串转化为对象,参数为JSON字符串
+        var obj=JSON.parse('{"name":"zhang","age":13,"sex":"男"}')
+        console.log(obj)
+        /*{name: "zhang", age: 13, sex: "男"}*/
+```
+
+
+
+JSON和js的区别
+
+``` javascript
+var obj={a:'hello',b:'bello'}
+var josn='{"a":"hello","b":"bello"}'
+```
+
+
+
+用java生成和解析，前段只需要去调用
+
+
+
+
+
+### AJAK
+
+* 原生js写法 xhr异步请求
+* jQuey封装好的方法
+* axios请求
+
+
+
+### 面向对象编程
+
+面向对象：（js有些区别）
+
+* 类：模版，对象的抽象
+
+* 对象：具体事例，类的实现
+
+原型（讲一个对象作为另一个对象的模版类似于java中的继承，将一个对象的原型指向某个对象）：
+
+```javascript
+var Student={
+    name:"zhang",
+    age:13,
+    sex:"男",
+   run:function () {
+       console.log(this.name+"run....");
+   }
+};
+var xiaoming={
+    name:"xiaoming"
+}
+var Bird={
+    fly: function () {
+        console.log(this.name+"fly....");
+    }
+}
+// 此时xiaoming和user没有关系，并且小明中没有run方法   当xiaoming.run（）时，报错
+xiaoming.__proto__=Student;//原型
+// 此时xiaoming和user关联，xiaoming.run（）不报错    输出：xiaomingrun.....
+xiaoming.__proto__ =Bird;
+```
+
+#### class继承
+
+class关键字：es6出现
+
+定义一个类的属性方法
+
+```JavaScript
+/*    以前定义的类
+        function Student(name) {
+            this.name=name;
+
+        }
+        Student.prototype.hello=function(){
+            alert('heloo world;')
+        }
+        */
+
+        //现在定义一个Student类：
+class Student{
+    constructor(name) {
+        this.name=name;
+    }
+    hello(){
+        alert('Hello')
+    }
+}
+
+
+var xiaoming=new Student("xiaoming")
+xiaoming.hello()
+```
+
+#### 继承
+
+```JavaScript
+class Student{
+    constructor(name) {
+        this.name=name;
+    }
+    hello(){
+        alert('Hello')
+    }
+}
+class xiaostudent extends Student{
+    constructor(name,grade) {
+        super(name);
+        this.grade=grade;
+    }
+    mygrade(){
+        alert('我是一名小学生');
+    }
+
+}
+
+
+var xiaoming=new Student("xiaoming");
+var xiaohong=new xiaostudent("xiaohong");
+xiaohong.mygrade();
+xiaoming.hello();
+```
+
+本质：查看对象原型；
+
+原型链，指向object
+
+____proto____
+
+object的原型停止查找，但是还是有原型
+
+
+
+### 操作BOM对象（重点）
+
+js和浏览器的关系
+
+js的诞生就是为了能在浏览器中运行
+
+B/S  BOM浏览器对象模型
+
+* IE 6~11
+* chrome
+* Safari
+* FireFox(linux默认)
+
+#### window
+
+window代表浏览器窗口
+
+window.alert(1)
+undefined
+window.innerHeight
+478
+window.innerWidth
+1338
+window.outerWidth
+1352
+
+
+
+##### navtor
+
+封装了浏览器的信息
+
+``` javascript
+navigator.appVersion
+"5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36"
+navigator.userAgent
+"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36"
+navigator.platform
+"Win32"
+```
+
+大多数时候不会使用navigator对象，应为会被人人为修改，不建议使用这些属性来判断和编写代码
+
+##### screen
+
+控制屏幕：
+
+``` JavaScript
+screen.width
+1536
+```
+
+##### location（重要）
+
+lacotion代表当前页面的URL信息
+
+``` JavaScript
+host: "www.baidu.com"
+href: "https://www.baidu.com/"
+protocol: "https:"
+reload: ƒ reload()//刷新网页
+//设置新的地址
+location.assign('https:******')
+```
+
+
+
+##### document
+
+document代表当前页面，ＨＴＭＬＤＯＭ文档树，通过这个改变当前页面
+
+```JavaScript
+<dl id="">
+    <dt>java</dt>
+    <dt>javase</dt>
+    <dt>javaee</dt>
+</dl>
+<script>
+    var dl=document.getElementById('app')
+</script>
+```
+
+获取文档树节点，
+
+可以获取网页的cookie
+
+劫持cookie原理：
+
+www.qq.com
+
+``` javas
+ <script src="aa.js">
+    </script>
+    <!--恶意人员，获取你cookie发送到他的服务器，，比如，陶宝和天猫，两个网页都打开，但是只要把一个登入另一个也自动登入-->
+```
+
+服务器可以设置cookie：httpOnly
+
+
+
+##### hostory(不建议使用)
+
+history.forward  //前进
+ƒ forward() { [native code] }
+history.back  //后退
+ƒ back() { [native code] }
+
+
+
+### 操作DOM
+
+文档对象模型
+
+核心：浏览器网页就是一个DOM的树形结构
+
+* 更新：更新DOM节点
+* 遍历：得到DOM节点
+* 删除：删除DOM节点
+* 添加：添加DOM节点
+
+要操作一个DOM节点（p，div，ul）必须先获得
+
+#### 获得DOM节点
+
+```JavaScript
+<div id="father">
+    <h1>标题1</h1>
+    <p class="p1">p1</p>
+    <p class="p2">p2</p>
+</div>
+
+    <script>
+        //对应css选择器
+       var h1= document.getElementsByTagName('h1');
+       var p1= document.getElementById('p1');
+       var p2= document.getElementsByClassName('p2');
+        var father= document.getElementById('father');
+        var clildrens=father.children//获取父节点中的所有子接点
+        //father.firstchild
+```
+
+这是原生代码，以后会尽可能用jQuery（）
+
+#### 更新节点
+
+```JavaScript
+<div id="id1">
+
+</div>
+<script>
+    var id1=document.getElementById('id1');
+    id1.innerText='abc'//属性使用字符串包裹
+    id1.style.color='red'
+    id1.style.fontSize='200px'
+    id1.style.padding='2em'
+```
+
+操作文本
+
+* innerText修改文本值
+* innerHTML=‘<stron g>123</strong>’解析HTML文本标签
+
+####　删除节点
+
+步骤：现货去父节点，然后同过父节点和删除自己
+
+```ＪａｖａＳｃｒｉｐｔ
+<div id="father">
+    <h1>标题1</h1>
+    <p class="p1">p1</p>
+    <p class="p2">p2</p>
+</div>
+
+<script>
+     var　self=document.getElementById('p1');
+      var father=p1.parentElement
+      father.removeChild(p1)
+    </script>
+    //删除是一个动态的过程
+    father.removeChild(father.ｃｈｉｒｌｄ［０］)
+```
+
+注意，删除多个节点的时候，children是在时刻变化的
+
+
+
+### 插入节点
+
+我们获得了某个DOM节点，假设这个DOM节点是空的，我们通过innerHTML就可以增加一个元素，但是这个DOM节点已经存在元素了，我们就需要添加一个追加
+
+##### 追加
+
+```JavaScript
+<p id="js">javascript</p>
+<div id="list">
+    <h1>标题1</h1>
+    <p class="p1">p1</p>
+    <p class="p2">p2</p>
+</div>
+
+<script>
+        var js=document.getElementById('js')
+    var list=document.getElementById('list')
+    list.append(js)//追加
+</script>
+```
+
+##### 创建一个新的标签出插入
+
+```JavaScript
+var newP=document.createElement('p')//创建一个p标签
+newP.id='newP'
+newP.innerText='hello world'
+/*将心得P标签加入到list中*/
+list.append(newP)
+```
+
+
+
+
+
+``` java 
+insert
+   
+```
+
+
+
+
+
+### 操作表单（验证）
+
+表单是form  DOM树
+
+1. 文本框		text
+2. 下拉框        select
+3. 复选框 checkbox，单选框 radio
+4. 隐藏域
+5. 密码框
+
+```html
+<form action="post">
+    <p>
+    <span>用户名：</span> <input type="text" id="username">
+    </p>
+    <p>
+        <span>性别：</span>
+        <input type="radio" name="sex" value="boy" id="boy">男
+        <input type="radio" name="sex" value="gril" id="gril">女
+    </p>
+</form>
+
+<script>
+    var username=document.getElementById('username')
+    var boy1=document.getElementById('boy')
+    var gril=document.getElementById('gril')
+    /*
+    * 对于多选框和单选框等固定的值，.value只能获取当前值，而不能判断是否被选中
+    * */
+    function look() {
+        console.log(boy1.checked)
+        console.log(gril.checked)
+
+        //得到输入框得值
+        console.log(username.value)
+    }
+    //如果要修改选框的值
+    function changecheck(){
+        boy1.checked=true;
+    }
+
+    //修改值
+    function change(){
+        username.value='123'
+        console.log(username.value)
+    }
+</script>
+```
+
+#### 表单提交
+
+```html
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--MD5工具库-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.16.0/js/md5.min.js"></script>
+</head>
+<body>
+<!--
+    
+    表单绑定提交事件
+    通过onsubmit这个绑定提交检测的函数，true，false
+    讲这个结果返回给表单，使用onsubmit接收
+
+
+
+-->
+<form action="https://www.baidu.com" method="post" onsubmit="return aaa()">
+    <p>
+        <span>用户名：</span> <input type="text" id="username" name="username" required><!--//required非空-->
+    </p>
+   <!-- <p>
+        <span>密码：</span> <input type="password" id="pwd" name="password" required>&lt;!&ndash;//required非空&ndash;&gt;
+
+    </p>-->
+    <p>
+        <span>密码：</span> <input type="password" id="input-pwd" required>&lt;!&ndash;//required非空&ndash;&gt;
+
+    </p>
+    <input type="hidden" id="md5-password" name="password">
+    <!--绑定onclick时间，别点击的时候-->
+<!--    <button type="button" onclick="aaa()"  >提交</button>-->
+    <input type="submit">
+</form>
+<script>
+    function aaa() {
+        var username=document.getElementById('username')
+        var pwd=document.getElementById('input-password')
+        var md5pwd=document.getElementById('md5-password')
+        md5pwd.value=md5(pwd.value)
+        return false
+        
+        
+        /*console.log(username.value)
+        console.log(pwd.value)
+        //MD5算法
+        pwd.value=md5(pwd.value)
+        console.log(pwd.value)
+        // pwd.value='123456'*/
+       
+        
+        return true;//可以校验判断表单提交内容true通过，false阻止
+
+
+    }
+</script>
+```
+
+
+
+
+
+### jQuery
+
+js
+
+jQuery库：存在大量js函数的库
+
+获取：
+
+```html
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script><!--在线导入-->
+</head>
+<body>
+
+<!--公式：$(selector(选择器).action()-->
+<a href="" id="test-jQuery">点我</a>
+<script>
+    //选择器就是css中的选择器
+    $('#test-jQuery').click(function(){
+        alert('hello jQuery')
+    })
+</script>
+```
+
+选择器
+
+```html
+<script>
+    /*
+    * //原生js，选择器少，麻烦不好记
+    * 
+    * 标签
+    *document.getElementsByTagName()
+    * 
+    * id
+    * document.getElementById()
+    * 
+    * 类
+    * document.getElementsByClassName()
+    * 
+    * 
+    * jQuery   css中的选择器都可以用
+    * $('p').click()//标签选择器
+    * $('#id').click()//id选择器
+    * $('.class').click()//类选择器
+    * 
+    * 
+    * */
+    
+    
+    
+    
+</script>
+```
+
+
+
+使用文档工具站；
+
+
+
+##### 事件
+
+鼠标事件
+
+键盘事件
+
+其他事件
+
+```html
+<!--获取鼠标当前的坐标-->
+mouse: <span id="mouseMove"></span>
+    <div id="divMove">
+        在这里移动鼠标试试
+    </div>
+
+<script>
+    //当网页元素加载完毕之后，响应时间
+    $(function () {
+        $('#divMove').mousemove(function (e) {
+
+           $('#mouseMove').text('X:' + e.pageX + 'Y:' +e.pageY)
+
+        })
+
+
+
+    })
+```
+
+
+
+
+
+### 操作DOM(节点文本操作)
+
+```html
+<ul id="test-ul">
+    <li class="java">java</li>
+    <li name="js">javascript</li>
+</ul>
+
+
+
+<script>
+    // document.getElementById()   原声代码
+    console.log($('#test-ul li[name=js]').text())
+    console.log($('#test-ul').html())
+
+</script>
+```
+
+$('#test-ul li[name=js]').text(）//获得值
+
+$('#test-ul li[name=js]').text(‘设置值’）//设置值
+
+$('#test-ul').html()//获得值
+
+$('#test-ul').html(‘<strong> 123<strong > ’)//设置值
+
+##### css操作
+
+```html
+$('#test-ul li[name=js]').css("color","red")
+```
+
+##### 元素的显示和隐藏（本质display：none）
+
+```html
+$('#test-ul li[name=js]').hide()//隐藏
+ $('#test-ul li[name=js]').show()//显示
+```

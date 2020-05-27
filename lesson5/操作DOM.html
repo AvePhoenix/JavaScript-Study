@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script><!--在线导入-->
+
+
+</head>
+<body>
+<ul id="test-ul">
+    <li class="java">java</li>
+    <li name="js">javascript</li>
+</ul>
+
+
+
+<script>
+    // document.getElementById()   原声代码
+    console.log($('#test-ul li[name=js]').text())
+    console.log($('#test-ul').html())
+    $('#test-ul li[name=js]').css("color","red")
+    $('#test-ul li[name=js]').hide()
+    // $('#test-ul li[name=js]').show()
+
+</script>
+</body>
+</html>

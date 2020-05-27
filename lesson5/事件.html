@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script><!--在线导入-->
+    <style>
+        #divMove{
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+<body>
+<!--获取鼠标当前的坐标-->
+mouse: <span id="mouseMove"></span>
+    <div id="divMove">
+        在这里移动鼠标试试
+    </div>
+
+<script>
+    //当网页元素加载完毕之后，响应时间
+    $(function () {
+        $('#divMove').mousemove(function (e) {
+
+           $('#mouseMove').text('X:' + e.pageX + 'Y:' +e.pageY)
+
+        })
+
+
+
+    })
+</script>
+</body>
+</html>

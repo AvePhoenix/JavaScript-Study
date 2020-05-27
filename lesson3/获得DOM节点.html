@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="father">
+    <h1>标题1</h1>
+    <p class="p1">p1</p>
+    <p class="p2">p2</p>
+</div>
+
+    <script>
+        //对应css选择器
+       var h1= document.getElementsByTagName('h1');
+       var p1= document.getElementById('p1');
+       var p2= document.getElementsByClassName('p2');
+        var father= document.getElementById('father');
+        var clildrens=father.children//获取父节点中的所有子接点
+        //father.firstchild
+        /*<!-- var clildren=p1.la获取父节点中的所有子接点
+        var clildrens=father.children//获取父节点中的所有子接点-->*/
+        var self=document.getElementById('p1');
+        var father=p1.parentElement
+        father.removeChild(p1)
+    </script>
+</body>
+</html>

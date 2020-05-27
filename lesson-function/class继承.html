@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*    以前定义的类
+        function Student(name) {
+            this.name=name;
+
+        }
+        Student.prototype.hello=function(){
+            alert('heloo world;')
+        }
+        */
+
+        //现在定义一个Student类：
+        class Student{
+            constructor(name) {
+                this.name=name;
+            }
+            hello(){
+                alert('Hello')
+            }
+        }
+        class xiaostudent extends Student{
+            constructor(name,grade) {
+                super(name);
+                this.grade=grade;
+            }
+            mygrade(){
+                alert('我是一名小学生');
+            }
+
+        }
+
+
+        var xiaoming=new Student("xiaoming");
+        var xiaohong=new xiaostudent("xiaohong");
+        xiaohong.mygrade();
+        xiaoming.hello();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

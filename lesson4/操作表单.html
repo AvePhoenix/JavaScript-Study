@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="post">
+    <p>
+    <span>用户名：</span> <input type="text" id="username" required><!--//required非空-->
+    </p>
+    <p>
+        <span>性别：</span>
+        <input type="radio" name="sex" value="boy" id="boy">男
+        <input type="radio" name="sex" value="gril" id="gril">女
+    </p>
+</form>
+
+<script>
+    var username=document.getElementById('username')
+    var boy1=document.getElementById('boy')
+    var gril=document.getElementById('gril')
+    /*
+    * 对于多选框和单选框等固定的值，.value只能获取当前值，而不能判断是否被选中
+    * */
+    function look() {
+        console.log(boy1.checked)
+        console.log(gril.checked)
+
+        //得到输入框得值
+        console.log(username.value)
+    }
+    //如果要修改选框的值
+    function changecheck(){
+        boy1.checked=true;
+    }
+
+    //修改值
+    function change(){
+        username.value='123'
+        console.log(username.value)
+    }
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--MD5工具库-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.16.0/js/md5.min.js"></script>
+</head>
+<body>
+<!--
+
+    表单绑定提交事件
+    通过onsubmit这个绑定提交检测的函数，true，false
+    讲这个结果返回给表单，使用onsubmit接收
+
+
+
+-->
+<form action="https://www.baidu.com" method="post" onsubmit="return aaa()">
+    <p>
+        <span>用户名：</span> <input type="text" id="username" name="username" required><!--//required非空-->
+    </p>
+   <!-- <p>
+        <span>密码：</span> <input type="password" id="pwd" name="password" required>&lt;!&ndash;//required非空&ndash;&gt;
+
+    </p>-->
+    <p>
+        <span>密码：</span> <input type="password" id="input-pwd" required>&lt;!&ndash;//required非空&ndash;&gt;
+
+    </p>
+    <input type="hidden" id="md5-password" name="password">
+    <!--绑定onclick时间，别点击的时候-->
+<!--    <button type="button" onclick="aaa()"  >提交</button>-->
+    <input type="submit">
+</form>
+<script>
+    function aaa() {
+        var username=document.getElementById('username')
+        var pwd=document.getElementById('input-password')
+        var md5pwd=document.getElementById('md5-password')
+        md5pwd.value=md5(pwd.value)
+        return false
+
+
+        /*console.log(username.value)
+        console.log(pwd.value)
+        //MD5算法
+        pwd.value=md5(pwd.value)
+        console.log(pwd.value)
+        // pwd.value='123456'*/
+
+
+        return true;//可以校验判断表单提交内容true通过，false阻止
+
+
+    }
+</script>
+
+
+</body>
+</html>

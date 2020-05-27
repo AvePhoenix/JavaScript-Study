@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<link rel="stylesheet" href="" type="text/css">
+    <script type="text/css" src=""></script>-->
+</head>
+<body>
+<p id="js">javascript</p>
+<div id="list">
+    <h1>标题1</h1>
+    <p class="p1">p1</p>
+    <p class="p2">p2</p>
+</div>
+
+<script>
+
+    var js=document.getElementById('js')//已存在的节点
+    var list=document.getElementById('list')
+    // 通过js创建一个新的节点
+    var newP=document.createElement('p')//创建一个p标签
+    newP.getAttribute('id',newP)
+    newP.id='newP'
+    newP.innerText='hello world'
+    newP.
+    /*将心得P标签加入到list中*/
+    list.append(newP)
+    list.append(js)//追加
+
+    //创建标签节点(通过这个属性可以设置任意值)
+   /*     var myscript=document.createElement('script')
+        myscript.setAttribute('type','text/javascript')
+        list.appendChild(myscript)
+        var body1=document.getElementsByTagName('body')
+         body1.setAttribute('style',backgroundColor='#a9475b')*/
+
+        // body1.style.backgroundColor='#a9475b'
+
+
+</script>
+
+
+</body>
+</html>
